@@ -26,6 +26,13 @@
   let currentNickname = "";
   let messages = [];
 
+  if (hasConfig && window.supabase?.createClient) {
+  supabaseClient = window.supabase.createClient(
+    config.supabaseUrl,
+    config.supabaseAnonKey
+    );
+  }
+
   nicknameInput.value = localStorage.getItem("chat_nickname") || "";
 
   function showNotice(text = "") {
