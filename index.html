@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실시간 채팅방</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">REALTIME CHAT</p>
+        <h1>실시간 채팅방</h1>
+        <p class="subtitle">Supabase로 연결되는 간단한 일반 채팅 프로그램</p>
+      </div>
+      <span id="connectionStatus" class="status offline">설정 필요</span>
+    </header>
+
+    <section class="setup-card">
+      <label>
+        닉네임
+        <input id="nicknameInput" maxlength="30" placeholder="예: 홍길동" />
+      </label>
+      <label>
+        채팅방
+        <input id="roomInput" maxlength="50" value="일반 채팅방" placeholder="예: 컴퓨터공학개론" />
+      </label>
+      <button id="joinButton" class="primary">채팅방 입장</button>
+    </section>
+
+    <section class="chat-card">
+      <div class="chat-header">
+        <div>
+          <h2 id="roomTitle">일반 채팅방</h2>
+          <p id="messageCount">메시지 0개</p>
+        </div>
+        <button id="clearButton" class="ghost" type="button">입력 지우기</button>
+      </div>
+
+      <div id="messageList" class="message-list">
+        <div class="empty-state">
+          <strong>채팅방에 입장해 주세요.</strong>
+          <span>닉네임과 채팅방을 입력한 뒤 버튼을 누르세요.</span>
+        </div>
+      </div>
+
+      <form id="messageForm" class="message-form">
+        <input id="messageInput" maxlength="1000" autocomplete="off"
+               placeholder="메시지를 입력하세요. Enter로 전송할 수 있습니다." disabled />
+        <button class="primary" type="submit" disabled>전송</button>
+      </form>
+    </section>
+
+    <p id="notice" class="notice"></p>
+  </main>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
